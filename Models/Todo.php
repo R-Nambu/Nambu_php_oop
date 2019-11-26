@@ -21,4 +21,12 @@
             $stmt = $this->db_manager->dbh->prepare('INSERT INTO '.$this->table.' (name) VALUES (?)');
             $stmt->execute([$name]);
         }
+
+        public function all()
+        {
+            $stmt = $this->db_manager->dbh->prepare('SELECT * FROM '.$this->table);
+            $stmt ->execute();
+            $tasks = $stmt->fetchAll();
+            return $tasks;
+        }
     }
