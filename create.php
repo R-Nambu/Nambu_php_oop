@@ -6,5 +6,11 @@
 
     $task = $_POST['task'];
 
+    // Todoクラスのインスタンス化
     $todo = new Todo();
+    // createメソッドに、$taskを代入して利用
     $todo->create($task);
+
+    // リダイレクトさせるための組み込み関数
+    // htmlより先に書く
+    header('Location: index.php');
