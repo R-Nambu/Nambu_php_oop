@@ -1,15 +1,22 @@
 <?php
   require_once('Models/Todo.php');
+  require_once('function.php');
 
   // Todoクラスのインスタンス化
   $todo = new Todo();
 
   // DBからデータを全件取得
   $tasks = $todo->all();
-
-  var_dump($tasks);
+  
+  // echo '<pre>';
+  // var_dump($tasks);
+  
+  // 以下の処理を中断  
+  // exit();
 
 ?>
+
+
 
 
 <html lang="ja">
@@ -51,15 +58,19 @@
         <tr class="bg-primary text-light">
             <th class=>TODO</th>
             <th>DUE DATE</th>
+            <th>REVISED DATE</th>
             <th></th>
             <th></th>
         </tr>
       </thead>
       <tbody>
+
+      <?php foreach($tasks as $task): ?>
         <!--ここ以下後ほど繰り返し処理する-->
         <tr>
-            <td>タスク名</td>
-            <td>日付</td>
+            <td><?php echo h($task['name']); ?></td>
+            <td><?php echo h($task['due_date']); ?></td>
+            <td><?php echo h($task['updated_at']); ?></td>
             <td>
                 <a class="text-success" href="">EDIT</a>
             </td>
@@ -67,6 +78,8 @@
                 <a class="text-danger" href="">DELETE</a>
             </td>
         </tr>
+        
+      <?php endforeach; ?>
         <!--/ ここ以上後ほど繰り返し処理する-->
       </tbody>
   </table>
