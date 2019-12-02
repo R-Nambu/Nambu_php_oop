@@ -72,10 +72,10 @@
             <td><?php echo h($task['due_date']); ?></td>
             <td><?php echo h($task['updated_at']); ?></td>
             <td>
-                <a class="text-success" href="">EDIT</a>
+            <a class="text-success" href="edit.php?id=<?php echo h($task['id']); ?>">EDIT</a>
             </td>
             <td>
-                <a class="text-danger" href="">DELETE</a>
+            <a class="text-danger" href="delete.php?id=<?php echo h($task['id']); ?>">DELETE</a>
             </td>
         </tr>
         
